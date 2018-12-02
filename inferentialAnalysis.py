@@ -48,31 +48,81 @@ runAnova(rawData, moreComplex)
 
 #(a) Does a student's current year (e.g., freshman, sophomore, etc.) effect their GPA?
 
-#-----
-
 #Independent variable = student's current year (categorical)
 #Dependent variable = GPA (Continous)
 
-#Simple Regression
-
-
-
-
-
+#Stat test = T-test
 
 #(b) Has the amount of snowfall in the mountains changed over time? 
 
 #Independent= Time(continous)
 #Dependent = Amount of snowfall(continous)
 
-#Pearson correlation  
+#Stat test =  Generalized Regression 
 
 #(c) Over the last 10 years, have there been more hikers on average in Estes Park in the spring or summer? 
 
 #Independent = Spring or Summer (season?) (categorical)
 #Dependent = Number of hikers 
 
+#Stat test = T-test
 
 #(d) Does a student's home state predict their highest degree level?
 
-#2. You've been given some starter code in class that shows you how to set up ANOVAs and Student's T-Tests in addition to the regression code from the last few weeks. Now, use this code to more deeply explore the simpsons_paradox.csv dataset. Compute new dependent variables that shows the percentage of students admitted and rejected for each row in the CSV. Use those rows to try to understand what significant correlations exist in this data. What factors appear to contribute most heavily to admissions? Do you think the admissions process is biased based on the available data? Why or why not?
+#Independent = Home State (categorical)
+#Dependent = Degresss level (categorical)
+
+#Stat test = Chi-Squared test
+
+
+#2. Compute new dependent variables that shows the percentage of students admitted and rejected for each row in the CSV. Use those rows to try to understand what significant correlations exist in this data. What factors appear to contribute most heavily to admissions? Do you think the admissions process is biased based on the available data? Why or why not?
+
+
+
+#- 
+
+#Monday (11.26)
+#3. There's a data quality issue hiding in the admissions dataset from Monday. Correct this issue and compare your new results. How are they the same? How do they differ?
+
+
+#df_cleaned= pd.read_csv('simpsons_paradox.csv')
+#df_cleaned['Total Applicants'] = #df_cleaned['Admitted']+df_cleaned['Rejected']
+#df_cleaned['Acceptance Rate'] = #df_cleaned['Admitted']/df_cleaned['Total Applicants']
+#df_cleaned.to_csv('Simpsons_Paradox_Cleaned.csv')
+
+
+rawdata2, df = generateDataset('Simpsons_Paradox_Cleaned.csv')
+
+print("Does gender correlate with admissions?")
+men = df[(df['Gender']=='Male')]
+women = df[(df['Gender']=='Female')]
+runTTest(men, women, 'Admitted')
+
+print('Does department correlate with admissions?')
+simpleFormula = 'Admitted ~ C(Department)'
+runAnova(rawData,simpleFormula)
+
+print("Do gender and department correlate with admissions?")
+moreComplex = 'Admitted ~ C(Department) + C(Gender)'
+runAnova(rawData,moreComplex)
+
+
+#-The data issue in the original CSV was that the tests were only taking into account subsets of admitted and rejected applicants
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

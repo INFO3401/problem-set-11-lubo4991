@@ -127,6 +127,10 @@ runTTest(men, women, 'Total_Applicants')
 
 #   The data issue in the original CSV was that the tests were observing admissions and rejections seperatably rather than together. To fix this issue we computed the total percent of admissions based on the total amount of applicants divided by those admitted. This is why the original test was indicating bias.
 
+#4. Images in Repository
+
+#At first glance, one might assume that there is bias in those accepted based on department and gender. However, after our significance testing, we know that this actually isn't the case and there is no correlation between admissions and department/gender. 
+
 
 
 

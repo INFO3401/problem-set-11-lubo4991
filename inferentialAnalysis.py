@@ -129,7 +129,7 @@ runTTest(men, women, 'Total_Applicants')
 
 #4. Images in Repository
 
-#At first glance, one might assume that there is bias in those accepted based on department and gender. However, after our significance testing, we know that this actually isn't the case and there is no correlation between admissions and department/gender. 
+#At first glance, one might assume that there is bias in those accepted based on department and gender. This is why Statistical tests are so important because visualizations can sometimes be deceiving. After our significance testing, we know that there is no correlation between admissions and department/gender. 
 
 
 
